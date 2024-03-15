@@ -34,7 +34,7 @@ create index idx_products_categories on products(category_guid)
 
 -- связь товара с остатками в разрезе магазина и активного набора остатков
 create index idx_shop_product_stocks on stocks(product_guid, shop_guid, data_set)
-alter table stocks add constraint check(stocks > 0)
+alter table stocks add constraint 'check_stocks_count' check(stocks > 0)
 select p.*, s.value stock
 from products p
 join stocks s on p.guid = s.product_guid
@@ -44,7 +44,7 @@ and category_guid = ...
 
 -- связь товара с ценами в разрезе магазина и активного набора цен
 create index idx_shop_product_prices on prices(product_guid, shop_guid, data_set)
-alter table prices add constraint check(base_price > 0)
+alter table prices add constraint 'check_prices_base_value' check(base_price > 0)
 
 -- наборы остатков и цен
 create index idx_stocks_datasets on stocks_data_sets(data_set)
