@@ -41,7 +41,11 @@ QUERY PLAN | -------------------------------------------------------------------
 Index Scan using idx_active_users on users (cost = 0.12..8.14 rows = 1 width = 172) | Index Cond: (lower(email) = 'some@email.ru'::text) |
 
 
+
 --
+create index idx_name_lexems on vitrine.products using gin(name_lexems)
+
+-- поиск по содержанию ключевых слов в названии товара
 explain
 select
 	*
