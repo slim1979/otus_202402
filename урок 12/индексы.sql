@@ -52,12 +52,12 @@ select
 from
 	vitrine.products p
 where
-	name_lexems @@ to_tsquery('shit');
+	name_lexems @@ to_tsquery('some');
 
 QUERY PLAN                                                                  |
 ----------------------------------------------------------------------------+
 Bitmap Heap Scan on products p  (cost=8.77..13.03 rows=1 width=148)         |
-  Recheck Cond: (name_lexems @@ to_tsquery('shit'::text))                   |
+  Recheck Cond: (name_lexems @@ to_tsquery('some'::text))                   |
   ->  Bitmap Index Scan on idx_name_lexems  (cost=0.00..8.77 rows=1 width=0)|
-        Index Cond: (name_lexems @@ to_tsquery('shit'::text))               |
+        Index Cond: (name_lexems @@ to_tsquery('some'::text))               |
 
