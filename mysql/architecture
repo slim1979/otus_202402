@@ -1,0 +1,12 @@
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| otus               |
+| otus_homework      |
+| performance_schema |
+| sys                |
++--------------------+
+6 rows in set (0.00 sec)
